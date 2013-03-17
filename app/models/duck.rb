@@ -1,3 +1,3 @@
 class Duck < ActiveRecord::Base
-  attr_accessible :description, :type
+  attr_accessible :description, :name
 end

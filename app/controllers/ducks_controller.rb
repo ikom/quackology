@@ -1,4 +1,7 @@
 class DucksController < ApplicationController
+
+  before_filter :find_duck, only: [:show, :edit, :update, :destroy]
+
   # GET /ducks
   # GET /ducks.json
   def index
@@ -13,8 +16,6 @@ class DucksController < ApplicationController
   # GET /ducks/1
   # GET /ducks/1.json
   def show
-    @duck = Duck.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @duck }
@@ -34,7 +35,6 @@ class DucksController < ApplicationController
 
   # GET /ducks/1/edit
   def edit
-    @duck = Duck.find(params[:id])
   end
 
   # POST /ducks
@@ -56,8 +56,6 @@ class DucksController < ApplicationController
   # PUT /ducks/1
   # PUT /ducks/1.json
   def update
-    @duck = Duck.find(params[:id])
-
     respond_to do |format|
       if @duck.update_attributes(params[:duck])
         format.html { redirect_to @duck, notice: 'Duck was successfully updated.' }
@@ -72,12 +70,17 @@ class DucksController < ApplicationController
   # DELETE /ducks/1
   # DELETE /ducks/1.json
   def destroy
-    @duck = Duck.find(params[:id])
     @duck.destroy
 
     respond_to do |format|
       format.html { redirect_to ducks_url }
       format.json { head :no_content }
     end
+  end
+
+  private
+
+  def find_duck
+    @duck = Duck.find(params[:id])
   end
 end
