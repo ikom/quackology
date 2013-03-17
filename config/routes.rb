@@ -1,4 +1,7 @@
 Quackology::Application.routes.draw do
+  resources :ducks
+
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

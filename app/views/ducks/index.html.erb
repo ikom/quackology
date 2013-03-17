@@ -1,0 +1,25 @@
+<h1>Listing ducks</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @ducks.each do |duck| %>
+  <tr>
+    <td><%= duck.name %></td>
+    <td><%= duck.description %></td>
+    <td><%= link_to 'Show', duck %></td>
+    <td><%= link_to 'Edit', edit_duck_path(duck) %></td>
+    <td><%= link_to 'Destroy', duck, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Duck', new_duck_path %>

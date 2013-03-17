@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @duck.name %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @duck.description %>
+</p>
+
+
+<%= link_to 'Edit', edit_duck_path(@duck) %> |
+<%= link_to 'Back', ducks_path %>
